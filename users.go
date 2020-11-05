@@ -59,19 +59,22 @@ const (
 )
 
 var (
+	ErrInvalidUsername   = errors.New("Invalid username")
 	ErrInvalidUserStatus = errors.New("Invalid user status")
 )
 
-func (user *User) Validate() bool {
+func (user *User) Validate() []error {
+	var errs []error
+
 	if !user.ValidateUsername() {
-		return false
+		errs = append(errs, ErrInvalidUsername)
 	}
 
 	if !user.ValidateStatus() {
-		return false
+		errs = append(errs, ErrInvalidUserStatus)
 	}
 
-	return true
+	return errs
 }
 
 func (user *User) ValidateUsername() bool {
