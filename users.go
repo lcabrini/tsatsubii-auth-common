@@ -60,7 +60,7 @@ var (
 	ErrInvalidUserStatus = errors.New("Invalid user status")
 )
 
-func (user *User) Validate() []error {
+func (user *User) Validate() (bool, []error) {
 	var errs []error
 
 	if !user.ValidateUsername() {
@@ -71,7 +71,11 @@ func (user *User) Validate() []error {
 		errs = append(errs, ErrInvalidUserStatus)
 	}
 
-	return errs
+	if len(errs) < 1 {
+		return true, nil
+	} else {
+		return false, errs
+	}
 }
 
 func (user *User) ValidateUsername() bool {
