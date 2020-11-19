@@ -1,7 +1,6 @@
 package ttbauth
 
 import (
-	"errors"
 	"time"
 
 	"github.com/google/uuid"
@@ -30,32 +29,25 @@ type UserRequest struct {
 }
 
 type UserResponse struct {
-	Status  int      `json:status`
-	Message string   `json:message`
-	Errors  []string `json:errors`
-	Data    User     `json:data`
+	Status int   `json:status`
+	Errors []int `json:errors`
+	Data   User  `json:data`
 }
 
 type UserListResponse struct {
-	Status  int      `json:status`
-	Message string   `json:message`
-	Data    UserList `json:data`
+	Status int      `json:status`
+	Data   UserList `json:data`
 }
 
-var (
-	ErrInvalidUsername   = errors.New("Invalid username")
-	ErrInvalidUserStatus = errors.New("Invalid user status")
-)
-
-func (user *User) Validate() (bool, []error) {
-	var errs []error
+func (user *User) Validate() (bool, []int) {
+	var errs []int
 
 	if !user.ValidateUsername() {
 		errs = append(errs, ErrInvalidUsername)
 	}
 
 	if !user.ValidateStatus() {
-		errs = append(errs, ErrInvalidUserStatus)
+		errs = append(errs, ErrInvalidStatus)
 	}
 
 	if len(errs) < 1 {
@@ -71,7 +63,7 @@ func (user *User) ValidateUsername() bool {
 }
 
 func (user *User) ValidateStatus() bool {
-	return user.Status >= 1 && user.Status <= 4
+	return user.Status >= StatusNew && user.Status <= StatusDeleted
 }
 
 /*

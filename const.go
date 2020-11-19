@@ -17,4 +17,7 @@ const (
 	ActionAdd    = 3
 	ActionUpdate = 4
 	ActionDelete = 5
+
+	ErrInvalidStatus   = 1
+	ErrInvalidUsername = 2
 )
