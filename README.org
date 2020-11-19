@@ -1,0 +1,5 @@
+#+TiTLE: Tsatsubii Auth Common
+
+* About
+This repository contains code that is shared by Tsatsubii Auth server and 
+client.
