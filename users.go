@@ -30,16 +30,14 @@ type UserRequest struct {
 }
 
 type UserResponse struct {
-	Status  int      `json:status`
-	Message string   `json:message`
-	Errors  []string `json:errors`
-	Data    User     `json:data`
+	Status int      `json:status`
+	Errors []string `json:errors`
+	Data   User     `json:data`
 }
 
 type UserListResponse struct {
-	Status  int      `json:status`
-	Message string   `json:message`
-	Data    UserList `json:data`
+	Status int      `json:status`
+	Data   UserList `json:data`
 }
 
 var (
