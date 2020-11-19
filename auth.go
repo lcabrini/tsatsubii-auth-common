@@ -19,12 +19,6 @@ type AuthResponse struct {
 	Session uuid.UUID `json:session`
 }
 
-const (
-	StatusAuthOK       = 0
-	StatusAuthFailed   = 1
-	StatusAuthInactive = 2
-)
-
 /*
 Copyright 2020 Lorenzo Cabrini
 

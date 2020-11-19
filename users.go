@@ -48,10 +48,6 @@ const (
 	StatusInactive = 3
 	StatusDeleted  = 4
 
-	StatusOK               = 0
-	StatusInvalidSession   = 1
-	StatusPermissionDenied = 2
-
 	ActionList   = 1
 	ActionView   = 2
 	ActionAdd    = 3
