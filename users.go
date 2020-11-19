@@ -42,19 +42,6 @@ type UserListResponse struct {
 	Data    UserList `json:data`
 }
 
-const (
-	StatusNew      = 1
-	StatusActive   = 2
-	StatusInactive = 3
-	StatusDeleted  = 4
-
-	ActionList   = 1
-	ActionView   = 2
-	ActionAdd    = 3
-	ActionUpdate = 4
-	ActionDelete = 5
-)
-
 var (
 	ErrInvalidUsername   = errors.New("Invalid username")
 	ErrInvalidUserStatus = errors.New("Invalid user status")
